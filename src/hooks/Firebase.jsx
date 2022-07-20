@@ -1,6 +1,6 @@
 import { auth, realTimeDb, storage } from "../firebase";
-import { ref as ref_database, set } from "firebase/database";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { ref as ref_database, set, query as query_database, get, orderByChild, equalTo } from "firebase/database";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { getDownloadURL, ref as ref_storage, uploadString } from "firebase/storage";
 
 export const insert = async ({ key, id, payload }) => {
@@ -37,17 +37,40 @@ export const upload = async ({ key, id, payload, entity, callback }) => {
     })
 };
 
-// const uploadTask = storage.ref(`${key}/${id}`).putString(payload, "data_url");
-// uploadTask.on(
-//   "state_changed",
-//   null,
-//   () => {
-//     storage
-//       .ref(key)
-//       .child(id)
-//       .getDownloadURL()
-//       .then((url) => {
-//         callback(entity, url);
-//       });
-//   }
-// );
+export const login = async (email, password) => {
+  await signInWithEmailAndPassword(auth, email, password)
+    .catch(error => {
+      console.log(error);
+    });
+}
+
+export const getSingleDataWithQuery = async ({ key, query, criteria }) => {
+  if (!criteria) return;
+  const dbRef = query_database(ref_database(realTimeDb, key), orderByChild(query), equalTo(criteria));
+  get(dbRef).then(snapshot => {
+    if (snapshot.exists()) {
+      const val = snapshot.val();
+      if (val) {
+        const keys = Object.keys(val);
+        return val[keys[0]];
+      }
+    } else {
+      console.log("No data available");
+    }
+  }).catch((error) => {
+    console.error(error);
+  });
+  return null;
+};
+
+// const snapshot = await realTimeDb
+// .ref()
+// .child(key)
+// .orderByChild(query)
+// .equalTo(criteria)
+// .get();
+// const val = snapshot.val();
+// if (val) {
+// const keys = Object.keys(val);
+// return val[keys[0]];
+// }

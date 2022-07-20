@@ -4,6 +4,9 @@ export const CometContext = createContext(null);
 
 export const CometProvider = ({ children }) => {
   const [cometChat, setCometChat] = useState(null);
+  const [user, setUser] = useState(null);
+
+  const values = { cometChat, user, setUser };
 
   const initCometChat = async () => {
     const { CometChat } = await import("@cometchat-pro/chat");
@@ -28,7 +31,7 @@ export const CometProvider = ({ children }) => {
   }, []);
 
   return (
-    <CometContext.Provider value={ cometChat }>
+    <CometContext.Provider value={ values }>
       {children}
     </CometContext.Provider>
   )

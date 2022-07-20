@@ -74,12 +74,14 @@ input {
 .login__form {
 	background-color: #fff;
 	box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+	border-radius: 1rem;
 	padding: 1.25rem;
 	width: 24.75rem;
 }
 
 .login__form input {
 	border: 1px solid #e5e7eb;
+	border-radius: 0.5rem;
 	font-size: 1rem;
 	margin-bottom: 0.75rem;
 	padding: 0.875rem 1rem;
@@ -95,6 +97,31 @@ input {
 	outline: none;
 	padding: 0.875rem 1rem;
 	width: 100%;
+	-webkit-animation: pulse 2s infinite;
+	animation: pulse 2s infinite;
+	border: 1px solid;
+	border-radius: 999px;
+	box-shadow: 0 0 0 0.5em transparent;
+	box-sizing: border-box;
+	display: block;
+	font-weight: 900;
+	-webkit-mask-image: none;
+	mask-image: none;
+	overflow: hidden;
+	position: relative;
+	text-transform: uppercase;
+}
+
+@-webkit-keyframes pulse {
+	0% {
+		box-shadow: 0 0 0 0 #fff;
+	}
+}
+
+@keyframes pulse {
+	0% {
+		box-shadow: 0 0 0 0 #fff;
+	}
 }
 
 .login__submit-btn:hover {
@@ -365,30 +392,35 @@ input {
 	outline: none;
 	padding: 0.875rem 1rem;
 	-webkit-animation: pulse 2s infinite;
-  animation: pulse 2s infinite;
-  border: 1px solid;
-  border-radius: 999px;
-  box-shadow: 0 0 0 0.5em transparent;
-  box-sizing: border-box;
-  display: block;
-  font-weight: 900;
-  -webkit-mask-image: none;
+	animation: pulse 2s infinite;
+	border: 1px solid;
+	border-radius: 999px;
+	box-shadow: 0 0 0 0.5em transparent;
+	box-sizing: border-box;
+	display: block;
+	font-weight: 900;
+	-webkit-mask-image: none;
 	mask-image: none;
-  overflow: hidden;
-  position: relative;
-  text-transform: uppercase;
+	overflow: hidden;
+	position: relative;
+	text-transform: uppercase;
 }
 
 @-webkit-keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 #fff;
-  }
+	0% {
+		box-shadow: 0 0 0 0 #fff;
+	}
 }
 
 @keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 #fff;
-  }
+	0% {
+		box-shadow: 0 0 0 0 #fff;
+	}
+}
+
+.signup__btn:hover {
+	cursor: pointer;
+	opacity: 0.8;
 }
 
 .header {
