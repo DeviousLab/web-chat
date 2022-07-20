@@ -1,5 +1,7 @@
-import firebase from "firebase";
-import "firebase/storage";
+import { initializeApp } from "firebase/app";
+import { getDatabase } from "firebase/database";
+import { getAuth } from "firebase/auth";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: `${process.env.REACT_APP_FIREBASE_API_KEY}`,
@@ -11,11 +13,10 @@ const firebaseConfig = {
   appId: `${process.env.REACT_APP_FIREBASE_APP_ID}`,
 };
 
-const app = !firebase.apps.length
-  ? firebase.initializeApp(firebaseConfig)
-  : firebase.app();
-const realTimeDb = app.database();
-const auth = app.auth();
-const storage = firebase.storage();
+const app = initializeApp(firebaseConfig);
+
+const realTimeDb = getDatabase(app);
+const auth = getAuth(app);
+const storage = getStorage(app);
 
 export { auth, storage, realTimeDb };
