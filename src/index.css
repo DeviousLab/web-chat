@@ -309,11 +309,19 @@ input {
 .signup__upload-container {
 	background-color: #f3f4f6;
 	border: 1px solid #e5e7eb;
+	border-radius: 0.5rem;
 	display: block;
 	font-size: 0.9375rem;
 	margin-bottom: 0.75rem;
 	padding: 0.875rem 1rem;
 	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.signup__upload-container svg {
+	margin-right: 0.5rem;
 }
 
 .signup__upload-container:hover {
@@ -327,6 +335,7 @@ input {
 .signup__form input {
 	background-color: #f3f4f6;
 	border: 1px solid #e5e7eb;
+	border-radius: 0.5rem;
 	display: block;
 	font-size: 0.9375rem;
 	margin-bottom: 0.75rem;
@@ -348,7 +357,6 @@ input {
 
 .signup__btn {
 	background-color: #0b65c2;
-	border: 0;
 	color: #fff;
 	display: block;
 	font-size: 1rem;
@@ -356,11 +364,31 @@ input {
 	margin: 1.25rem auto;
 	outline: none;
 	padding: 0.875rem 1rem;
+	-webkit-animation: pulse 2s infinite;
+  animation: pulse 2s infinite;
+  border: 1px solid;
+  border-radius: 999px;
+  box-shadow: 0 0 0 0.5em transparent;
+  box-sizing: border-box;
+  display: block;
+  font-weight: 900;
+  -webkit-mask-image: none;
+	mask-image: none;
+  overflow: hidden;
+  position: relative;
+  text-transform: uppercase;
 }
 
-.signup__btn:hover {
-	cursor: pointer;
-	opacity: 0.8;
+@-webkit-keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 #fff;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 #fff;
+  }
 }
 
 .header {

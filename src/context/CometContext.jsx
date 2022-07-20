@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 
-export const CometContext = createContext();
+export const CometContext = createContext(null);
 
 export const CometProvider = ({ children }) => {
   const [cometChat, setCometChat] = useState(null);
