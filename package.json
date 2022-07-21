@@ -20,7 +20,8 @@
     "@emotion/core": "^10.0.35",
     "dateformat": "^4.0.0",
     "emoji-mart": "^3.0.0",
-    "twemoji": "^13.0.1"
+    "twemoji": "^13.0.1",
+    "html-react-parser": "^1.4.5"
   },
   "scripts": {
     "start": "react-scripts start",

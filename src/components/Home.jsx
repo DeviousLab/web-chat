@@ -1,8 +1,26 @@
-import React from 'react'
+import React, { useContext } from 'react'
+
+import Header from './layout/Header'
+import { CometContext } from '../context/CometContext'
+import { CometChatUI } from '../cometchat-pro-react-ui-kit/CometChatWorkspace/src';
 
 const Home = () => {
+  const { user, setUser, cometChat } = useContext(CometContext);
+
+  if (!cometChat) {
+    return (
+      <>
+      </>
+    )
+  }
+
   return (
-    <div>Home</div>
+    <>
+      <Header />
+      <div className="chat">
+        <CometChatUI />
+      </div>
+    </>
   )
 }
 

@@ -166,7 +166,7 @@ const Register = ({ toggleModal }) => {
             type="file"
             onChange={uploadAvatar}
           />
-          <input type="text" placeholder="Fullname" ref={fullnameRef} />
+          <input type="text" placeholder="Name" ref={fullnameRef} />
           <input type="text" placeholder="Email" ref={emailRef} />
           <input type="password" placeholder="Password" ref={passwordRef} />
           <input

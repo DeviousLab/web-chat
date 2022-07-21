@@ -1,7 +1,7 @@
 import { auth, realTimeDb, storage } from "../firebase";
 import { ref as ref_database, set, query as query_database, get, orderByChild, equalTo } from "firebase/database";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { getDownloadURL, ref as ref_storage, uploadBytesResumable, uploadString } from "firebase/storage";
+import { getDownloadURL, ref as ref_storage, uploadString } from "firebase/storage";
 
 export const insert = async ({ key, id, payload }) => {
   await set(ref_database(realTimeDb, `${key}/${id}`), payload);

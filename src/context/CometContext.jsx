@@ -20,14 +20,24 @@ export const CometProvider = ({ children }) => {
       .then(
         () => {
           setCometChat(() => CometChat);
+          console.log("CometChat initialized successfully");
         },
         (error) => {
           console.log("error", error);
         }
       );
   };
+
+  const initAuthUser = () => {
+    const authenticatedUser = localStorage.getItem("auth");
+    if (authenticatedUser) {
+      setUser(JSON.parse(authenticatedUser));
+    }
+  };
+
   useEffect(() => {
     initCometChat();
+    initAuthUser();
   }, []);
 
   return (
