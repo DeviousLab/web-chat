@@ -110,6 +110,9 @@ input {
 	overflow: hidden;
 	position: relative;
 	text-transform: uppercase;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 @-webkit-keyframes pulse {
@@ -122,6 +125,10 @@ input {
 	0% {
 		box-shadow: 0 0 0 0 #fff;
 	}
+}
+
+.login__submit-btn svg {
+	margin-left: 0.5rem;
 }
 
 .login__submit-btn:hover {

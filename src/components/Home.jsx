@@ -5,7 +5,7 @@ import { CometContext } from '../context/CometContext'
 import { CometChatUI } from '../cometchat-pro-react-ui-kit/CometChatWorkspace/src';
 
 const Home = () => {
-  const { user, setUser, cometChat } = useContext(CometContext);
+  const { cometChat } = useContext(CometContext);
 
   if (!cometChat) {
     return (

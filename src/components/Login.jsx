@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useContext } from "react";
 import validator from "validator";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { AiOutlineLogin } from "react-icons/ai";
 
 import withModal from "./Modal"
 import Register from "./Register";
@@ -82,7 +83,7 @@ const Login = ({ toggleModal }) => {
             ref={emailRef}
           />
           <input type="password" placeholder="Password" ref={passwordRef} />
-          <button className="login__submit-btn" onClick={login}>Login</button>
+          <button className="login__submit-btn" onClick={login}>Login<AiOutlineLogin size={20} /></button>
           <span className="login__signup" onClick={() => toggleModal(true)}>
             Create New Account
           </span>

@@ -24,20 +24,6 @@ export const upload = async ({ key, id, payload, entity, callback }) => {
         })
     }
     )
-  // const storageRef = ref_storage(storage, `${key}/${id}.jpg`);
-  // const uploadTask = uploadBytesResumable(storageRef, payload, 'data_url', { customMetaData: 'image/jpeg' });
-  // uploadTask.on('state_changed',
-  //   null,
-  //   (error) => {
-  //     console.log(error);
-  //   },
-  //   () => {
-  //     getDownloadURL(uploadTask.snapshot.ref)
-  //       .then(url => {
-  //         callback(entity, url);
-  //       })
-  //   }
-  // )
 };
 
 export const login = async (email, password) => {
