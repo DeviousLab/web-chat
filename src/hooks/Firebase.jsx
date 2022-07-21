@@ -47,30 +47,13 @@ export const login = async (email, password) => {
 export const getSingleDataWithQuery = async ({ key, query, criteria }) => {
   if (!criteria) return;
   const dbRef = query_database(ref_database(realTimeDb, key), orderByChild(query), equalTo(criteria));
-  get(dbRef).then(snapshot => {
-    if (snapshot.exists()) {
-      const val = snapshot.val();
-      if (val) {
-        const keys = Object.keys(val);
-        return val[keys[0]];
-      }
-    } else {
-      console.log("No data available");
+  const snapshot = await get(dbRef);
+  if (snapshot.exists()) {
+    const val = snapshot.val();
+    if (val) {
+      const keys = Object.keys(val);
+      return val[keys[0]];
     }
-  }).catch((error) => {
-    console.error(error);
-  });
+  }
   return null;
 };
-
-// const snapshot = await realTimeDb
-// .ref()
-// .child(key)
-// .orderByChild(query)
-// .equalTo(criteria)
-// .get();
-// const val = snapshot.val();
-// if (val) {
-// const keys = Object.keys(val);
-// return val[keys[0]];
-// }
