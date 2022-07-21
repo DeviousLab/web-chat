@@ -1,7 +1,7 @@
 import { auth, realTimeDb, storage } from "../firebase";
 import { ref as ref_database, set, query as query_database, get, orderByChild, equalTo } from "firebase/database";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { getDownloadURL, ref as ref_storage, uploadString } from "firebase/storage";
+import { getDownloadURL, ref as ref_storage, uploadBytesResumable, uploadString } from "firebase/storage";
 
 export const insert = async ({ key, id, payload }) => {
   await set(ref_database(realTimeDb, `${key}/${id}`), payload);
@@ -16,25 +16,28 @@ export const createAccount = async (email, password) => {
 
 export const upload = async ({ key, id, payload, entity, callback }) => {
   const storageRef = ref_storage(storage, `${key}/${id}`);
-  uploadString(storageRef, payload, 'data_url')
+  await uploadString(storageRef, payload, 'data_url')
     .then((snapshot) => {
-      getDownloadURL(snapshot.ref_storage)
-        .then((url) => {
+      getDownloadURL(snapshot.ref)
+        .then(async (url) => {
           callback(entity, url);
         })
-    })
-    .catch(error => {
-      switch (error.code) {
-        case 'storage/unauthorized':
-          break;
-        case 'storage/canceled':
-          break;
-        case 'storage/unknown':
-          break;
-        default:
-          break;
-      }
-    })
+    }
+    )
+  // const storageRef = ref_storage(storage, `${key}/${id}.jpg`);
+  // const uploadTask = uploadBytesResumable(storageRef, payload, 'data_url', { customMetaData: 'image/jpeg' });
+  // uploadTask.on('state_changed',
+  //   null,
+  //   (error) => {
+  //     console.log(error);
+  //   },
+  //   () => {
+  //     getDownloadURL(uploadTask.snapshot.ref)
+  //       .then(url => {
+  //         callback(entity, url);
+  //       })
+  //   }
+  // )
 };
 
 export const login = async (email, password) => {
