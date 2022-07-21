@@ -123,7 +123,7 @@ const Register = ({ toggleModal }) => {
         });
         uiHook.hideLoading();
         toast.success(
-          `${email} was created successfully! Please sign in with your created account`
+          `Your account was created successfully ${fullname}! You can now sign in.`
         );
         toggleModal(false);
       }

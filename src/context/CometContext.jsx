@@ -20,7 +20,6 @@ export const CometProvider = ({ children }) => {
       .then(
         () => {
           setCometChat(() => CometChat);
-          console.log("CometChat initialized successfully");
         },
         (error) => {
           console.log("error", error);

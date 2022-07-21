@@ -74,6 +74,17 @@ const Login = ({ toggleModal }) => {
           <span style={{ color: "#0B65C2", fontWeight: "bold" }}>Web Chat App</span>{" "}
           built with React
         </p>
+        <div className="login__demo-accounts">
+        <p>Demo Accounts</p>
+        <ul>
+        <li>Email: sarah@gmail.com</li>
+        <li>Password: password</li>
+        </ul>
+        <ul>
+        <li>Email: david@gmail.com</li>
+        <li>Password: password</li>
+        </ul>
+        </div>
       </div>
       <div className="login__form-container">
         <div className="login__form">
